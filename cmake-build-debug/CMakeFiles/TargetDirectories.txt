@@ -1,0 +1,3 @@
+/home/sirfeedsalot/Documents/CSC340/class-coding-3-linked-list/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/sirfeedsalot/Documents/CSC340/class-coding-3-linked-list/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/sirfeedsalot/Documents/CSC340/class-coding-3-linked-list/cmake-build-debug/CMakeFiles/simpleLinkedList.dir

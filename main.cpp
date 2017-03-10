@@ -17,6 +17,8 @@ struct Node {
  */
 void initNode(struct Node *head, int n) {
   //TODO: Initiliaze the node data to n and the next pointer to..?
+    head->data = n;
+    head->next = nullptr;
 }
 
 /**
@@ -26,23 +28,48 @@ void initNode(struct Node *head, int n) {
  */
 void addNode(struct Node *head, int n) {
   //TODO - Implement this function.
+    Node *current;
+    Node *new_Node = new Node();
+
+    new_Node -> data = n;// new_Node data stores n
+    current = head;// current points to head node
+    while(current -> next != nullptr){// iterate until end of linked list
+        current = current -> next;
+    }
+    current -> next = new_Node;// link at end of linked list points to new_Node
+    new_Node -> next = nullptr;// new_Node tail points to nullptr
 }
 
 /**
- * This funtion addes a node to the front of the list.
+ * This funtion adds a node to the front of the list.
  * @param head - pointer to the head of the list
  * @param n - data that the new node should hold
  */
 void insertFront(struct Node **head, int n) {
   //TODO
+    Node *new_head = new Node();
+    new_head -> data = n;
+    new_head ->next = *head;
+    *head = new_head;
 }
 
 /**
- * This function displayes the nodes in the list
+ * This function displays the nodes in the list
  * @param head  - pointer to the head of the list
  */
 void display(struct Node *head) {
   //TODO
+    Node *current = head;
+
+    if(head == nullptr){
+        cout<<"No nodes to display: empty list.";
+        return;
+    }
+    do{
+        cout<< current-> data << " ";
+        current = current -> next;
+    }while(current != nullptr);
+    cout<< endl;
 }
 
 /**
@@ -52,8 +79,19 @@ void display(struct Node *head) {
  * @return - pointer to the node found.
  */
 struct Node *searchNode(struct Node *head, int n) {
-  //TODO
-  return NULL;
+    //TODO
+    Node *current = head;
+    Node *found;
+
+    while (current != nullptr) {
+        if (current -> data == n) {
+            found = current;
+            break;
+        }else{
+            current = current -> next;
+        }
+    }
+    return found;
 }
 
 /**
@@ -64,7 +102,22 @@ struct Node *searchNode(struct Node *head, int n) {
  */
 bool deleteNode(struct Node **head, Node *ptrDel) {
   //TODO
-  return false;
+    bool tf = false;
+
+    if(*head == ptrDel){// if address in **head is == to ptrDel move to conditional
+        *head = ptrDel -> next;// address inherits next node
+    }
+
+    Node *current = *head;// current points to address stored in **head
+    while(current != nullptr){
+        if(current == ptrDel){// if current == to ptrDel node, move to conditional
+            current = current -> next;// current inherits next node
+            tf = true;
+        }else{
+         current = current -> next;
+        }
+    }
+  return tf;
 }
 
 /* reverse the list */
@@ -130,7 +183,8 @@ int main() {
   struct Node *newHead;
   struct Node *head = new Node;
 
-  /*
+
+
   initNode(head,10);
   display(head);
 
@@ -189,6 +243,6 @@ int main() {
   cout << "Deleting the copied list\n";
   deleteLinkedList(&newHead);
   display(newHead);
-   */
+
   return 0;
 }

@@ -1,0 +1,1 @@
+CMake: 3.6.3@/mnt/a41d9362-c698-4626-9a57-97a9a0519045/clion-2016.3.2/bin/cmake/bin/cmake
